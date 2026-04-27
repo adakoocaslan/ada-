@@ -1,0 +1,42 @@
+# This iimporpip install phonenumberst sqlite3
+
+# Bellek üzerinde geçici bir veritabanı oluşturalım
+conn = sqlite3.connect(':memory:')
+cursor = conn.cursor()
+
+# 1. Tabloyu Oluşturalım
+cursor.execute('''
+CREATE TABLE Kitaplar (
+    KitapID INT PRIMARY KEY,
+    KitapAd TEXT,
+    Yazar TEXT,
+    YayinYili INT
+)
+''')
+
+# 2. Veri Ekleyelim
+cursor.execute("INSERT INTO Kitaplar VALUES (1, 'Nutuk', 'Atatürk', 1927)")
+cursor.execute("INSERT INTO Kitaplar VALUES (2, 'Çalıkuşu', 'R. Nuri Güntekin', 1922)")
+
+# 3. Sorgulayalım ve Çıktıyı Görelim
+print("--- Kütüphane Kitap Listesi ---")
+cursor.execute("SELECT * FROM Kitaplar")
+for row in cursor.fetchall():
+    print(row)
+
+conn.close()s a sample Python script.
+
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+
+
+def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+
+
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    print_hi('PyCharm')
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
